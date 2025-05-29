@@ -5,7 +5,7 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         Number number = new Number();
-        System.out.println("Введите x: ");
+        System.out.print("Введите x: ");
         double x = scanner.nextDouble();
         number.setX(x);
         number.calc();
