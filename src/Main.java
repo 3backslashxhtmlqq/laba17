@@ -16,18 +16,18 @@ public class Main {
 
         switch (s) {
             case "save":
-                try (ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream("result.dat"))) {
-                    objectOutputStream.writeObject(number);
+                try (BufferedWriter writer = new BufferedWriter(new FileWriter("result.txt"))) {
+                    writer.write("x: " + number.getX() + "\n");
+                    writer.write("y: " + number.getY() + "\n");
                     System.out.println("Данные сохранены.");
                 } catch (IOException e) {
                     System.out.println("ошибк: " + e.getMessage());
                 }
                 break;
             case "upload":
-                try (ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream("result.dat"))) {
-                    Number load = (Number) objectInputStream.readObject();
-                    System.out.println("Данные загружены: " + "\n" + "x: " + load.getX() + "\n" + "y: " + load.getY());
-                } catch (IOException | ClassNotFoundException e) {
+                try (BufferedReader reader = new BufferedReader(new FileReader("result.txt"))) {
+                    System.out.println("Данные загружены: " + "\n" + reader.readLine() + "\n" + reader.readLine() + "\n");
+                } catch (IOException | NullPointerException e) {
                     System.out.println("ошибк: " + e.getMessage());
                 }
                 break;

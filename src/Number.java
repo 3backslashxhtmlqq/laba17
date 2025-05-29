@@ -17,10 +17,6 @@ public class Number implements Serializable {
         return y;
     }
 
-    public void setY(double y) {
-        this.y = y;
-    }
-
     public void calc() {
         y = x - Math.sin(x);
     }
